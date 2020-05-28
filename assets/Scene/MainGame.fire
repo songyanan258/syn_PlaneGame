@@ -15,6 +15,9 @@
     "_children": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 14
       }
     ],
     "_tag": -1,
@@ -397,7 +400,8 @@
     },
     "bg02": {
       "__id__": 5
-    }
+    },
+    "bg_speed": 2
   },
   {
     "__type__": "cc.Node",
@@ -475,5 +479,38 @@
     },
     "_fitWidth": false,
     "_fitHeight": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_id": "869rBOX0hHG4XvYFQAKhCm",
+    "_prefab": {
+      "__id__": 15
+    },
+    "_name": "enemy02",
+    "_active": true,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 14
+    },
+    "asset": {
+      "__uuid__": "e31ef9b0-9e3b-4207-85d3-ed2acbee1446"
+    },
+    "fileId": "82S4F2Lf1HL4fFVBlihmtk",
+    "sync": true
   }
 ]

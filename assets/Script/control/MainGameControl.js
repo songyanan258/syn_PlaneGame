@@ -22,9 +22,10 @@ cc.Class({
             }
         )
 
-        cc.loader.loadRes('enemy/enemy01.prefab', (err, prefab) => {
-            const enemy = cc.instantiate(prefab)
-            createEnemy([enemy], this)
+        cc.loader.loadResDir('enemy', (err, arr) => {
+            // const enemy = cc.instantiate(prefab)
+            const res = arr.filter(item => item.name == 'explode_enemy' ? false : true)
+            createEnemy(res, this)
         })
 
     },

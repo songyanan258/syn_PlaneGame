@@ -9,7 +9,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
     //敌机初始化
     onLoad() {
-        this.getBullet()
+        this.getBulletPrefab()
         this.animation = this.node.getComponent(cc.Animation)
         //创建对象池
     },
@@ -59,8 +59,12 @@ cc.Class({
         this.nodeControl = node
         this.enemyIndex = index || 0
     },
-    getBullet() {
-        cc.loader.loadRes('bullet/enemy_bullet01.prefab', (err, prefab) => {
+
+    getBulletPrefab() {
+        this.getBullet('bullet/enemy_bullet01.prefab')
+    },
+    getBullet(str) {
+        cc.loader.loadRes(str, (err, prefab) => {
             this.bulletPrefab = prefab
             this.initBullet()
             // this.bulletPrefab.setPosition(cc.p(0, 20))
@@ -82,7 +86,6 @@ cc.Class({
         // this.animation.play('enemy01')
         // self.node.addChild(exp)
         self.node.__des__()
-
     },
 
     // update (dt) {},

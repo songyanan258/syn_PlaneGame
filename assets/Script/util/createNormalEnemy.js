@@ -18,8 +18,9 @@ const createEnemy = function (_nodes, _thisArg) {
   for (var i = 1; i <= initCount; ++i) {
     enemyPools[i] = new cc.NodePool()
     for (let j = 1; j <= initCount; ++j) {
-      let enemy = cc.instantiate(getEnemyNode(nodes, 0))
-      enemy.getComponent('NormalEnemy01').setControlNode(thisArg.canvas, i)
+      const type = i <= 1 ? 1 : 2
+      let enemy = cc.instantiate(getEnemyNode(nodes, type - 1))
+      enemy.getComponent('NormalEnemy0' + type).setControlNode(thisArg.canvas, i)
       enemyPools[i].put(enemy)
     }
   }
@@ -32,7 +33,7 @@ const createEnemy = function (_nodes, _thisArg) {
 let EnemyCallback = cc.callFunc(event => {
   //敌机类型
   // let enemyType = window.getRandomInt(1, 5)
-  let enemyType = 1
+  let enemyType = window.getRandomInt(1, 2)
   //创建敌机
   let enemyPool = enemyPools[enemyType]
   let enemy
@@ -40,8 +41,8 @@ let EnemyCallback = cc.callFunc(event => {
     enemy = enemyPool.get()
   } else {
     return
-    enemy = cc.instantiate(getEnemyNode(nodes, 0))
-    enemy.getComponent('NormalEnemy0' + 1).setControlNode(thisArg.canvas)
+    enemy = cc.instantiate(getEnemyNode(nodes, enemyType - 1))
+    enemy.getComponent('NormalEnemy02').setControlNode(thisArg.canvas)
   }
 
   //获取父级元素
