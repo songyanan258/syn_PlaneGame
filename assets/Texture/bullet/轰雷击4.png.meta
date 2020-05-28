@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "dad2af53-f97d-4f45-812f-53d2de99f04e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "轰雷击4": {
+      "ver": "1.0.3",
+      "uuid": "5bc3c28c-2a3b-46eb-8817-e540d4b470cb",
+      "rawTextureUuid": "dad2af53-f97d-4f45-812f-53d2de99f04e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -5.5,
+      "trimX": 0,
+      "trimY": 47,
+      "width": 533,
+      "height": 450,
+      "rawWidth": 533,
+      "rawHeight": 533,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
