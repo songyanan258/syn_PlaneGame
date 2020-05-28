@@ -15,9 +15,6 @@
     "_children": [
       {
         "__id__": 2
-      },
-      {
-        "__id__": 14
       }
     ],
     "_tag": -1,
@@ -478,38 +475,5 @@
     },
     "_fitWidth": false,
     "_fitHeight": true
-  },
-  {
-    "__type__": "cc.Node",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_id": "5b3bq9X2pMR5tR0RKIYCNd",
-    "_prefab": {
-      "__id__": 15
-    },
-    "_name": "hreo_bullet02",
-    "_active": true,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0
-  },
-  {
-    "__type__": "cc.PrefabInfo",
-    "root": {
-      "__id__": 14
-    },
-    "asset": {
-      "__uuid__": "4e30301b-fa89-479a-85ad-6f1554ca785d"
-    },
-    "fileId": "5b3bq9X2pMR5tR0RKIYCNd",
-    "sync": true
   }
 ]

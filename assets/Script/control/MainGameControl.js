@@ -30,7 +30,9 @@ cc.Class({
     },
 
     start() {
-
+        //开启碰撞检测
+        const manager = cc.director.getCollisionManager()
+        manager.enabled = true
     },
 
     // update (dt) {},

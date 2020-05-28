@@ -57,7 +57,7 @@ cc.Class({
         let direction = cc.pNormalize(cc.pSub(this.moveToPos, oldPos))
         this.node.setPosition(cc.pAdd(oldPos, cc.pMult(direction, 300 * dt)))
     },
-
+    //初始化飞机子弹
     initBullet() {
         this.bulletPool = new cc.NodePool()
         let initCount = 10
@@ -95,7 +95,14 @@ cc.Class({
         bullet.runAction(cc.sequence(cc.moveTo(1, x, 600), finished))
     },
     start() {
-
+        //设置分组
+        this.node.group = 'HeroPlane'
+    },
+    //主角飞机碰撞逻辑
+    onCollisionEnter(other, self) {
+        const otherName = other.node.name
+        if (otherName == 'hreo_bullet01' || otherName == 'hreo_bullet02') return
+        console.log('啊~~~我被撞啦~~~~~')
     },
     getBullet() {
         cc.loader.loadResDir('hero_bullet', cc.Prefab, (err, arr) => {
