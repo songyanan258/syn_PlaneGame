@@ -1,4 +1,4 @@
-
+import { createEnemy, createSingleEnemy } from '../util/createNormalEnemy'
 cc.Class({
     extends: cc.Component,
 
@@ -40,6 +40,7 @@ cc.Class({
         }, this)
         this.node.runAction(cc.sequence(cc.delayTime(1), bulletLogic))
     },
+
     //子弹飞行动作
     runBulletAction(x, y, bullet) {
         x = this.node.position.x + x
@@ -58,7 +59,6 @@ cc.Class({
         this.enemyIndex = index || 0
     },
     getBullet() {
-
         cc.loader.loadRes('bullet/enemy_bullet01.prefab', (err, prefab) => {
             this.bulletPrefab = prefab
             this.initBullet()
@@ -69,7 +69,12 @@ cc.Class({
 
 
     start() {
-
+        //当前敌机碰撞组件分组
+        this.node.group = 'EnemyPlane'
+    },
+    //当前敌机碰撞逻辑
+    onCollisionEnter(other, self) {
+        self.node.__des__()
     },
 
     // update (dt) {},

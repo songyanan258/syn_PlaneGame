@@ -101,8 +101,6 @@ cc.Class({
     //主角飞机碰撞逻辑
     onCollisionEnter(other, self) {
         const otherName = other.node.name
-        if (otherName == 'hreo_bullet01' || otherName == 'hreo_bullet02') return
-        console.log('啊~~~我被撞啦~~~~~')
     },
     getBullet() {
         cc.loader.loadResDir('hero_bullet', cc.Prefab, (err, arr) => {

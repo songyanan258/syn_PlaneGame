@@ -1,11 +1,10 @@
-import createEnemy from '../util/createNormalEnemy'
+import { createEnemy } from '../util/createNormalEnemy'
 cc.Class({
     extends: cc.Component,
 
     properties: {
 
     },
-
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {

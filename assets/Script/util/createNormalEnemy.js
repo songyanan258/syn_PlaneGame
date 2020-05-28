@@ -3,10 +3,16 @@ let thisArg, nodes
 const enemyPools = []
 //当前敌机数量
 let enemyCount = 3
+//创建单个敌机
+const createSingleEnemy = function () {
+  thisArg.node.runAction(cc.sequence(cc.delayTime(1), EnemyCallback))
+}
 //创建敌机
 const createEnemy = function (_nodes, _thisArg) {
-  thisArg = _thisArg
-  nodes = _nodes
+  // thisArg = _thisArg
+  _thisArg ? thisArg = _thisArg : null
+  _nodes ? nodes = _nodes : null
+  // nodes = _nodes
   const initCount = 5
 
   for (var i = 1; i <= initCount; ++i) {
@@ -49,9 +55,28 @@ let EnemyCallback = cc.callFunc(event => {
   // enemy.runAction(cc.sequence(cc.moveTo(3, pos.x, -200), finished))
   //敌机飞行结束后的回调
   let finished = cc.callFunc(target => {
-    thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+    // thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+    if (Math.random() > 0.5) {
+      thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+      thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+    }
+    if (enemyCount === 0) {
+      thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+    }
     enemyPool.put(enemy)
+    if (enemyPool.size() === 5) {
+      thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+      thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+      thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+    }
   }, thisArg)
+  //将对象回收到对象池中
+  enemy.__des__ = () => {
+    thisArg.node.runAction(cc.sequence(cc.delayTime(Math.random()), EnemyCallback))
+    enemy.stopAction(enemy.__action__)
+    enemyPool.put(enemy)
+  }
+  enemy.__this__ = thisArg
   switch (enemyType) {
     case 1:
       enemyAction(3, pos.x, enemy, finished)
@@ -72,27 +97,23 @@ let EnemyCallback = cc.callFunc(event => {
       enemyAction(4, pos.x, enemy, finished)
       break;
   }
-  enemyCount -= 1
   if (Math.random() > 0.5) {
-    enemyCount += 2
     thisArg.node.runAction(cc.sequence(cc.delayTime(5), EnemyCallback))
     thisArg.node.runAction(cc.sequence(cc.delayTime(4), EnemyCallback))
   }
   if (enemyCount === 0) {
     thisArg.node.runAction(cc.sequence(cc.delayTime(3), EnemyCallback))
-    enemyCount += 1
   }
 }, thisArg)
-
-
 //敌机飞行动作
 const enemyAction = (time, x = x * (Math.random() > 0.5 ? -1 : 1), enemy, finished, sequence) => {
-  enemy.runAction(cc.sequence(sequence ? sequence : cc.moveTo(time, x, -320 - enemy.height / 2), finished))
+  let action = cc.sequence(sequence ? sequence : cc.moveTo(time, x, -320 - enemy.height / 2), finished)
+  enemy.__action__ = action
+  enemy.runAction(action)
 }
 
 const getEnemyNode = (node, type) => {
-
   return node[type]
 }
 
-export default createEnemy
+export default { createEnemy, createSingleEnemy }

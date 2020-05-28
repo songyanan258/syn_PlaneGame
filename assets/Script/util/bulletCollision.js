@@ -20,6 +20,7 @@ cc.Class({
     },
     //子弹碰撞逻辑处理
     onCollisionEnter(other, self) {
+        this.node.destroy()
         // console.log(other, self)
     }
     // update (dt) {},
