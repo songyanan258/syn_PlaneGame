@@ -1,22 +1,18 @@
-import { moveBg11, moveBg21 } from '../util/move'
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        //背景
-        bg01: {
-            default: null,
-            type: cc.Sprite
-        },
-        bg02: {
-            default: null,
-            type: cc.Sprite
-        },
-        bg_speed: 2
+        bgList: [cc.Node],
+        bg_speed: 10
     },
 
-    // LIFE-CYCLE CALLBACKS:
+
+    onLoad() {
+    },
+
     bgMove: function (bgList, speed) {
+
         //每次循环二张图片一起滚动
         for (var index = 0; index < bgList.length; index++) {
             bgList[index].y -= speed;
@@ -29,14 +25,10 @@ cc.Class({
             bgList[1].y = 640;
         }
     },
-    onLoad() {
-        // moveBg11(this.bg01.node, this)
-        // moveBg21(this.bg02.node, this)
-    },
     update() {
-        this.bgMove([this.bg01.node, this.bg02.node], this.bg_speed);
-    },
+        this.bgMove(this.bgList, this.bg_speed);
 
+    },
     start() {
 
     },

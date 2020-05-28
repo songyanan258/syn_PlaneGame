@@ -10,6 +10,7 @@ cc.Class({
     //敌机初始化
     onLoad() {
         this.getBullet()
+        this.animation = this.node.getComponent(cc.Animation)
         //创建对象池
     },
 
@@ -74,7 +75,14 @@ cc.Class({
     },
     //当前敌机碰撞逻辑
     onCollisionEnter(other, self) {
+        // if (this.animation._isOnLoadCalled) self.node.__des__()
+        // this.animation.on('finished', () => {
+        // this.animation._isOnLoadCalled = 0
+        // }, this)
+        // this.animation.play('enemy01')
+        // self.node.addChild(exp)
         self.node.__des__()
+
     },
 
     // update (dt) {},

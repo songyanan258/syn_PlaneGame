@@ -1,4 +1,5 @@
 import { createEnemy } from '../util/createNormalEnemy'
+import { } from '../util/index'
 cc.Class({
     extends: cc.Component,
 
@@ -10,7 +11,7 @@ cc.Class({
     onLoad() {
         let self = this
         cc.loader.loadRes(
-            'plane.prefab',
+            window.Player == window.PLAYER_1 ? 'plane.prefab' : 'plane2.prefab',
             (err, prefab) => {
                 //创建节点
                 self.heroPlane = cc.instantiate(prefab)

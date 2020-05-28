@@ -48,7 +48,7 @@ let EnemyCallback = cc.callFunc(event => {
   enemy.parent = thisArg.node
 
   //敌机横坐标
-  let enemyPosX = window.getRandomInt(-160 + enemy.width / 2, 160 - enemy.width / 2)
+  let enemyPosX = window.getRandomInt(-210 + enemy.width / 2, 210 - enemy.width / 2)
   //设置敌机初始坐标,应该设置在屏幕外
   let pos = cc.p(enemyPosX, 320 + enemy.height / 2)
   enemy.setPosition(pos)

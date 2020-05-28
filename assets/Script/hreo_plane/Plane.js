@@ -49,9 +49,9 @@ cc.Class({
         if (!this.isMoving) return
         let oldPos = this.node.position
         if (Math.abs(this.moveToPos.x - oldPos.x) < 3 && Math.abs(this.moveToPos.y - oldPos.y) < 3) return
-        if (Math.abs(this.moveToPos.x) >= 160) {
+        if (Math.abs(this.moveToPos.x) >= 210) {
             const padding = this.node.width / 2
-            this.moveToPos = { y: this.moveToPos.y, x: this.moveToPos.x > 0 ? 160 - padding : padding - 160 }
+            this.moveToPos = { y: this.moveToPos.y, x: this.moveToPos.x > 0 ? 210 - padding : padding - 210 }
         }
         //获取移动方向
         let direction = cc.pNormalize(cc.pSub(this.moveToPos, oldPos))
